@@ -1,0 +1,13 @@
+Index: linux-4.7.5/include/linux/libata.h
+===================================================================
+--- linux-4.7.5.orig/include/linux/libata.h
++++ linux-4.7.5/include/linux/libata.h
+@@ -1544,7 +1544,7 @@ static inline unsigned int ata_class_abs
+ 
+ static inline unsigned int ata_dev_enabled(const struct ata_device *dev)
+ {
+-	return ata_class_enabled(dev->class);
++	return dev->class == ATA_DEV_ATAPI; /* optical drives only (mid) */
+ }
+ 
+ static inline unsigned int ata_dev_disabled(const struct ata_device *dev)
